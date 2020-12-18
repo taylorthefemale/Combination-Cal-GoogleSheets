@@ -273,7 +273,8 @@ process.on("unhandledRejection", (err) => {
   if (err.code === "ECONNRESET") {
     helpers.log("Connection Lost, Signalling restart");
     process.exit();
-  }});
+  }
+});
 //client.login(process.env.BOT_TOKEN)
 =======
 require('dotenv').config();
