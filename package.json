@@ -1,7 +1,7 @@
 {
-  "name": "niles",
+  "name": "ricky",
   "version": "3.0.0",
-  "description": "niles discord bot",
+  "description": "ricky discord bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,16 +9,20 @@
   "author": "Sean Coffey",
   "license": "MIT",
   "dependencies": {
+    "@mchangrh/node-google-calendar": "^2.0.3",
     "columnify": "^1.5.4",
     "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "googleapis": "^66.0.0",
     "luxon": "^1.25.0",
-    "@mchangrh/node-google-calendar": "^2.0.3",
+    "nodemon": "^2.0.6",
     "promise-defer": "^1.0.0",
-    "string-strip-html": "^6.2.0"
+    "string-strip-html": "^6.2.0",
+    "webhook-discord": "^3.7.7"
   },
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/niles-bot/niles/"
+    "url": "https://github.com/ricky-bot/ricky/"
   }
 }

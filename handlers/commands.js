@@ -42,7 +42,7 @@ function clean(channel, numberMessages, recurse) {
     if (messages.size === 100 && recurse) {
       channel.bulkDelete(messages).catch((err) => {
         if(err.code===50034) {
-          channel.send("Sorry - Due to Discord limitations, Niles cannot clean messages older than 14 days!");
+          channel.send("Sorry - Due to Discord limitations, ricky cannot clean messages older than 14 days!");
         }
         helpers.log("clean error in guild " + channel.guild.id + err);
       });
@@ -50,7 +50,7 @@ function clean(channel, numberMessages, recurse) {
     } else {
       channel.bulkDelete(messages).catch((err) => {
         if(err.code===50034) {
-          channel.send("Sorry - Due to Discord limitations, Niles cannot clean messages older than 14 days!");
+          channel.send("Sorry - Due to Discord limitations, ricky cannot clean messages older than 14 days!");
         }
         helpers.log("clean error in guild " + channel.guild.id + err);
       });
@@ -816,7 +816,7 @@ function displayStats(message) {
   bot.client.shard.fetchClientValues("guilds.cache.size").then((results) => {
     let embed = new bot.discord.MessageEmbed()
       .setColor("RED")
-      .setTitle(`Niles Bot ${settings.secrets.current_version}`)
+      .setTitle(`ricky Bot ${settings.secrets.current_version}`)
       .setURL("https://github.com/seanecoffey/Niles")
       .addField("Servers", `${results.reduce((acc, guildCount) => acc + guildCount, 0)}`, true)
       .addField("Uptime", Duration.fromObject({ seconds: process.uptime()}).toFormat("d:hh:mm:ss"), true)

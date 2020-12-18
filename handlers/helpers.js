@@ -11,7 +11,7 @@ const eventType = {
   MULTYEND: "me"
 };
 const defaultSettings = {
-  "prefix": "!",
+  "prefix": "ricky",
   "calendarID": "",
   "calendarChannel": "",
   "timezone": "",
@@ -231,7 +231,7 @@ function getStringTime(date, guildid) {
 
 function sendMessageHandler(message, err) {
   if (err.message === "Missing Permissions") {
-    return message.author.send("Oh no! I don't have the right permissions in the channel you're trying to use me in! Toggle on all of the 'text permissions' for the **Niles** role");
+    return message.author.send("Oh no! I don't have the right permissions in the channel you're trying to use me in! Toggle on all of the 'text permissions' for the **ricky** role");
   } else {
     return log(err);
   }

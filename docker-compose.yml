@@ -1,18 +1,18 @@
 version: "3"
 services:
-    niles:
-        image: mchangrh/niles:latest
-        container_name: niles
+    ricky:
+        image: mchangrh/ricky:latest
+        container_name: ricky
         volumes:
             - type: volumes
-              source: niles-stores
-              target: /usr/src/niles/stores
+              source: ricky-stores
+              target: /usr/src/ricky/stores
             - type: bind
               source: ./secrets.json
-              target: /usr/src/niles/config/secrets.json
+              target: /usr/src/ricky/config/secrets.json
             - type: bind
-              source: ./niles-sa.json
-              target: /usr/src/niles/config/niles-sa.json
+              source: ./ricky-sa.json
+              target: /usr/src/ricky/config/ricky-sa.json
 
 volumes:
-    niles-stores:
+    ricky-stores:

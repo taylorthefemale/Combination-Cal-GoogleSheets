@@ -1,7 +1,7 @@
 # Site settings
-title: Niles Discord Calendar Bot
-tag_text: Niles
-description: Niles is a simple Discord bot for creating in-channel calendars and interfacing with Google Calendar
+title: Mustang E-Sports Calendar & Google-Sheets Bot
+tag_text: Ricky-Bobby
+description: Ricky-Bobby is a simple Discord bot for creating in-channel calendars and interfacing with Google Calendar & Google Sheets
 
 # Build settings
 markdown: kramdown

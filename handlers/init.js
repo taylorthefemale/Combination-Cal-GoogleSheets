@@ -95,7 +95,7 @@ function setPrefix(message) {
     newPrefix = message.content.split(" ")[2];
   }
   if (!newPrefix) {
-    return message.channel.send(`You are currently using \`${guildSettings.prefix}\` as the prefix. To change the prefix use \`!prefix <newprefix>\` or \`@Niles prefix <newprefix>\``);
+    return message.channel.send(`You are currently using \`${guildSettings.prefix}\` as the prefix. To change the prefix use \`!prefix <newprefix>\` or \`@ricky prefix <newprefix>\``);
   }
   if (newPrefix) {
     message.channel.send(`Do you want to set the prefix to \`${newPrefix}\` ? **(y/n)**`);
@@ -121,11 +121,11 @@ function setRoles(message) {
     return message.channel.send(strings.RESTRICT_ROLE_MESSAGE);
   }
   if (!adminRole) {
-    return message.channel.send(`The admin role for this discord is \`${guildSettings.allowedRoles}\`. You can change this setting using \`${guildSettings.prefix}admin <ROLE>\`, making sure to spell the role as you've created it. You must have this role to set it as the admin role.\n\ You can allow everyone to use Niles again by entering \`${guildSettings.prefix}admin everyone\``);
+    return message.channel.send(`The admin role for this discord is \`${guildSettings.allowedRoles}\`. You can change this setting using \`${guildSettings.prefix}admin <ROLE>\`, making sure to spell the role as you've created it. You must have this role to set it as the admin role.\n\ You can allow everyone to use ricky again by entering \`${guildSettings.prefix}admin everyone\``);
   }
   if (adminRole) {
     if (["everyone", "Everyone", "EVERYONE"].includes(adminRole)) {
-      message.channel.send("Do you want to allow everyone in this channel/server to use Niles? **(y/n)**");
+      message.channel.send("Do you want to allow everyone in this channel/server to use ricky? **(y/n)**");
       helpers.yesThenCollector(message).then(() => {
         writeSetting(message, [], "allowedRoles");
       }).catch((err) => {

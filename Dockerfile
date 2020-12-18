@@ -1,6 +1,6 @@
 FROM node:12-alpine3.12
 LABEL maintainer="michael@mchang.name"
-WORKDIR /usr/src/niles
+WORKDIR /usr/src/ricky
 COPY . .
 
 # set up stores

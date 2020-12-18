@@ -26,13 +26,13 @@ nav_order: 2
 Select or create a [Google Calendar](https://calendar.google.com), and select 'Settings and sharing'
 {: .pb-4 }
 
-![gcalexample](../../assets/images/gcal-example-0.gif)
+ricky [gcalexample](../../assets/images/gcal-example-0.gif)
 {: .text-center .pb-4 }
 
-Scroll down and under 'Share with specific people', add `niles-291@niles-169605.iam.gserviceaccount.com` and give permissions to `Make changes to events`
+Scroll down and under 'Share with specific people', add `discordbot@nylastrial.iam.gserviceaccount.com` and give permissions to `Make changes to events`
 {: .pb-4 }
 
-![gcalexample](../../assets/images/gcal-example-1.gif)
+ricky [gcalexample](../../assets/images/gcal-example-1.gif)
 {: .text-center}
 
 ---
@@ -42,14 +42,14 @@ Scroll down and under 'Share with specific people', add `niles-291@niles-169605.
 Still on the 'Settings and sharing' page, scroll down to 'Integrate Calendar' and copy the calendar ID.
 {: .pb-4 }
 
-![gcalidexample](../../assets/images/gcal-example-2.png)
+ricky [gcalidexample](../../assets/images/gcal-example-2.png)
 {: .text-center .pb-4 }
 
-Now in your Discord server (in a channel where Niles will have permissions, i.e. #general or another channel you have setup) we can use `!id` with the usage `!id calendarID` i.e:
+Now in your Discord server (in a channel where Niles will have permissions, i.e. #general or another channel you have setup) we can use `ricky id` with the usage `ricky id calendarID` i.e:
 
-`!id qb9t3fb6mn9p52a4re0hc067d8@group.calendar.google.com`
+`ricky id qb9t3fb6mn9p52a4re0hc067d8@group.calendar.google.com`
 
-![discord-calendar-id-example](../../assets/images/discord-calendar-id.gif)
+ricky [discord-calendar-id-example](../../assets/images/discord-calendar-id.gif)
 {: .text-center}
 
 ---
@@ -58,30 +58,30 @@ Now in your Discord server (in a channel where Niles will have permissions, i.e.
 
 We could pull this from your Google calendar or Discord server, but since your members might be in different timezones, you must add your own.
 
-This can be done using `!tz` i.e.
+This can be done using `ricky tz` i.e.
 
-`!tz America/New_York`
-`!tz UTC+5`
-`!tz EST`
+`ricky tz America/New_York`
+`ricky tz UTC+5`
+`ricky tz EST`
 
-![discord-tz-example](../../assets/images/discord-tz.gif)
+ricky [discord-tz-example](../../assets/images/discord-tz.gif)
 {: .text-center}
 
 [Full list of TZ database names on Wikipedia](https://cutt.ly/tz)
 
 ---
 
-## Run your calendar for the first time!
+## Run your calendar for the first timericky 
 
 Great now we can tell Niles to pull events from our GCal, setting up the database and display our calendar.
 
-`!display` - Displays the calendar WITHOUT deleting any messages.
+`ricky display` - Displays the calendar WITHOUT deleting any messages.
 
 Both methods pin the current calendar to the channel it was called in.
 
-The calendar will automatically check for updates every 5 minutes, but you can manually use `!update` to pull any updates.
+The calendar will automatically check for updates every 5 minutes, but you can manually use `ricky update` to pull any updates.
 
-![discord-display-example](../../assets/images/discord-display.gif)
+ricky [discord-display-example](../../assets/images/discord-display.gif)
 {: .text-center }
 
 ---

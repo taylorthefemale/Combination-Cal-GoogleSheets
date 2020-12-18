@@ -1,3 +1,4 @@
+require('dotenv').config();
 let discord = require("discord.js");
 let client = new discord.Client();
 exports.discord = discord;
@@ -12,6 +13,23 @@ let helpers = require("./handlers/helpers.js");
 let restricted = require("./handlers/nopermissions.js");
 let dm = require("./handlers/dm.js");
 let checks = require("./handlers/createMissingAttributes.js");
+const Discord = require('discord.js');
+//const client = new Discord.Client();
+const fs = require('fs');
+
+const webhook = require("webhook-discord");
+
+const Hook = new webhook.Webhook("https://discord.com/api/webhooks/775919754540089374/eRiekDX-zp0V0PUFqlSjfNnmC84xoKVyYB1_u3mxWrJBJmwLfWWZEcbCG5TAUKgwsBad");
+
+const msg = new webhook.MessageBuilder()
+  .setName("Mustang E-Sports Bot")
+  .setColor("#AE0000")
+  .setText("The Mustang's Twitch Channel is live!");
+
+Hook.send(msg);
+
+
+const PREFIX = 'ricky';
 
 function addMissingGuilds(availableGuilds) {
   //Create databases for any missing guilds
@@ -22,6 +40,17 @@ function addMissingGuilds(availableGuilds) {
     guilds.create(client.guilds.cache.get(guildId));
   })
 }
+client.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) { // Setup each command for client
+  const command = require(`./commands/${file}`);
+  client.commands.set(command.name, command);
+}
+
+//client.once('ready', () => {
+  //console.log(`Logged in as ${client.user.tag}!`)
+//});
 
 client.login(settings.secrets.bot_token);
 
@@ -120,7 +149,7 @@ client.on("message", (message) => {
   if (!helpers.checkPermissions(message) && (!users[message.author.id] || users[message.author.id].permissionChecker === "1" || !users[message.author.id].permissionChecker)) {
     if (restricted.allCommands.includes(cmd)) {
       if (!helpers.checkRole(message)) {
-        return message.channel.send("You must have the `" + guildSettings.allowedRoles[0] + "` role to use Niles in this server");
+        return message.channel.send("You must have the `" + guildSettings.allowedRoles[0] + "` role to use ricky in this server");
       }
       try {
         restricted.run(message);
@@ -135,7 +164,7 @@ client.on("message", (message) => {
   if (!guildSettings.calendarID || !guildSettings.timezone) {
     try {
       if (!helpers.checkRole(message)) {
-        return message.channel.send("You must have the `" + guildSettings.allowedRoles[0] + "` role to use Niles in this server")
+        return message.channel.send("You must have the `" + guildSettings.allowedRoles[0] + "` role to use ricky in this server")
       }
       init.run(message);
     } catch (err) {
@@ -145,7 +174,7 @@ client.on("message", (message) => {
   } else {
     try {
       if (!helpers.checkRole(message)) {
-        return message.channel.send("You must have the `" + guildSettings.allowedRoles[0] + "` role to use Niles in this server")
+        return message.channel.send("You must have the `" + guildSettings.allowedRoles[0] + "` role to use ricky in this server")
       }
       commands.run(message);
     } catch (err) {
@@ -153,7 +182,74 @@ client.on("message", (message) => {
     }
   }
 });
+client.on('message', msg => {
+  const content = msg.content;
+  const parts = content.split(' ');
+  const humans = ['first', 'last', 'age', 'year'];
 
+  if (parts[0] != PREFIX) { return; }
+  if (parts.length === 1) { msg.reply("If you ain\'t first, you\'re last!"); }
+
+  if (msg.content === 'ricky list names') {
+    client.commands.get('showNames').execute(msg);
+  }
+  /**else if (parts[1] === 'list' && humans.some(v => content.includes(v))) {
+    if (parts[2] === 'first')
+      client.commands.get(firstName).execute(msg)
+    else if (parts[2] === 'last')
+      client.commands.get('lastName').execute(msg)
+    else if (parts[2] === 'age')
+      client.commands.get('personAge').execute(msg)
+    else if (parts[2] === 'year')
+      client.commands.get('yearBorn').execute(msg);
+    }
+  else if (parts[1] === 'list' && humans.some(v => content.includes(v))) {
+  if (parts.indexOf('first') === 2)
+    client.commands.get(firstName).execute(msg)
+  else if (parts.indexOf('first') === 3)
+    client.commands.get(firstName).execute(msg)
+  else if (parts.indexOf('first') === 4)
+    client.commands.get(firstName).execute(msg)
+    else if (parts.indexOf('last') === 2)
+      client.commands.get('lastName').execute(msg)
+    else if (parts.indexOf('last') === 3)
+      client.commands.get('lastName').execute(msg)
+    else if (parts.indexOf('last') === 4)
+      client.commands.get('lastName').execute(msg)
+    else if (parts.indexOf('age') === 2)
+      client.commands.get('personAge').execute(msg)
+    else if (parts.indexOf('age') === 3)
+      client.commands.get('personAge').execute(msg)
+    else if (parts.indexOf('age') === 4)
+      client.commands.get('personAge').execute(msg)
+    else if (parts.indexOf('year') === 2)
+      client.commands.get('yearBorn').execute(msg)
+    else if (parts.indexOf('year') === 3)
+      client.commands.get('yearBorn').execute(msg)
+    else if (parts.indexOf('year') === 4)
+      client.commands.get('yearBorn').execute(msg)
+  }
+  else if (parts[1] === 'list' && humans.some(v => content.includes(v))) {
+    content.forEach(function (item, index) {
+      console.log(item, index)
+    });
+  }*/
+  else if (parts[1] === 'add' && parts[2] != null
+    && parts[3] === 'to' && parts[4] != null) {
+    client.commands.get('addScore').execute(msg, (parts[2]), parts[4]);
+  }
+  else if (parts[1] === 'subtract' && parts[2] != null
+    && parts[3] === 'to' && parts[4] != null) {
+    client.commands.get('subtractScore').execute(msg, parseInt(parts[2]), parts[4]);
+  }
+  else if (parts[1] === 'add' && parts[2] === 'member' && parts[3] != null) {
+    client.commands.get('addMember').execute(msg, parts[3]);
+  }
+  else if (parts[1] === 'remove' && parts[2] === 'member' && parts[3] != null) {
+    client.commands.get('removeMember').execute(msg, parts[3]);
+  }
+
+})
 // ProcessListeners
 process.on("uncaughtException", (err) => {
   helpers.log("uncaughtException error" + err);
@@ -178,3 +274,4 @@ process.on("unhandledRejection", (err) => {
     process.exit();
   }
 });
+//client.login(process.env.BOT_TOKEN)
